@@ -13,9 +13,10 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "test": "npm run build",
+    "test": "npm run build && jest",
+    "test:coverage": "npm run build && jest --coverage",
     "peg": "pegjs --plugin ./node_modules/ts-pegjs -o src/parser.ts --cache src/tsc-grammar.pegjs",
-    "build": "npm run clean && npm run peg && npm run ttsc && jest",
+    "build": "npm run clean && npm run peg && npm run ttsc",
     "ttsc": "ttsc -p tsconfig.dist.json",
     "clean": "rm -f ./dist/* && rm -f src/parser.ts",
     "eslint": "npm run eslint:check",
@@ -27,20 +28,21 @@
   "devDependencies": {
     "@aivenio/eslint-config-aiven": "^1.0.0",
     "@typescript-eslint/eslint-plugin": "^4.1.0",
+    "@typescript-eslint/parser": "^4.1.0",
     "@zerollup/ts-transform-paths": "^1.7.18",
+    "coveralls": "^3.1.0",
     "eslint": "^7.4.0",
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-import": "^2.22.0",
     "eslint-plugin-prettier": "^3.1.4",
+    "grammkit": "^0.7.1",
     "jest": "^26.4.2",
     "pegjs": "^0.10.0",
     "prettier": "2.0.5",
+    "ts-jest": "^26.3.0",
     "ts-node": "^9.0.0",
     "ts-pegjs": "^0.2.7",
     "ttypescript": "^1.5.12",
-    "typescript": "^4.0.2",
-    "@typescript-eslint/parser": "^4.1.0",
-    "grammkit": "^0.7.1",
-    "ts-jest": "^26.3.0"
+    "typescript": "^4.0.2"
   }
 }
